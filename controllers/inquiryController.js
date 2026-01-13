@@ -23,10 +23,14 @@ exports.submitInquiry = async (req, res) => {
 
     await history.save();
 
-    // Redirect back to index.html with success modal params
-    res.redirect(`/index.html?success=true&name=${encodeURIComponent(inquiry.full_name)}&ref=${inquiry.inquiry_id}`);
+    // ✅ Instead of redirect, return JSON response
+    res.status(201).json({
+      success: true,
+      inquiry_id: inquiry.inquiry_id,
+      name: inquiry.full_name
+    });
   } catch (error) {
     console.error('Error saving inquiry or status history:', error);
-    res.status(500).send('Error submitting inquiry');
+    res.status(500).json({ success: false, error: error.message });
   }
 };
