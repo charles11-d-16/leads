@@ -5,4 +5,4 @@ const inquiryCounterSchema = new mongoose.Schema({
   seq: { type: Number, default: 0 }
 });
 
-module.exports = mongoose.model('InquiryCounter', inquiryCounterSchema);
+module.exports = mongoose.model('InquiryCounter', inquiryCounterSchema, 'inquiry_counters');

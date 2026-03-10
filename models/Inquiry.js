@@ -29,21 +29,26 @@ const inquirySchema = new mongoose.Schema({
   company: { type: String }
 });
 
-// Auto-increment hook (async/await style, no next)
 inquirySchema.pre('save', async function () {
   if (!this.inquiry_id) {
-    let counter = await InquiryCounter.findByIdAndUpdate(
-      { _id: 'inquiry_id' },
-      { $inc: { seq: 1 } },
-      { new: true, upsert: true }
-    );
+    try {
+      let counter = await InquiryCounter.findOneAndUpdate(
+        { _id: 'inquiry_id' },
+        { $inc: { seq: 1 } },
+        { new: true, upsert: true }
+      );
 
-    if (!counter || typeof counter.seq !== 'number') {
-      counter = { seq: 1 };
+      const seq = counter?.seq || 1;
+      if (typeof seq !== 'number' || seq < 1) {
+        throw new Error('Invalid counter sequence value');
+      }
+
+      const padded = String(seq).padStart(5, '0');
+      this.inquiry_id = `CLNT_${padded}`;
+    } catch (error) {
+      console.error('Error generating inquiry_id:', error);
+      throw error;
     }
-
-    const padded = String(counter.seq).padStart(2, '0');
-    this.inquiry_id = `CLNT_${padded}`;
   }
 });
 
