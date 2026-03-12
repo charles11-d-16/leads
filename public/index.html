@@ -524,8 +524,40 @@ if (params.get('success') === 'true') {
         modal.style.display = 'none';
       }
     };
+
+    // remove query string to avoid showing it again or cluttering URL
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+    }
 }
 window.dispatchEvent(new Event('scroll'));
 </script>
 </body>
+
+<script>
+// smooth scroll for internal links without updating the URL hash
+(function(){
+  function scrollToElement(id) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var hash = a.getAttribute('href');
+    if (hash && hash.length > 1) {
+      e.preventDefault();
+      var id = hash.slice(1);
+      scrollToElement(id);
+      // remove any hash added to the location
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+  });
+})();
+</script>
 </html>
