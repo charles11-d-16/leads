@@ -8,6 +8,9 @@ const InquiryCounter = require('./models/InquiryCounter');
 
 dotenv.config();
 
+// Since you set MONGO_DB in Render, we'll use it directly for the database name.
+const DB_NAME = process.env.MONGO_DB;
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -17,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose
   .connect(process.env.MONGO_URI, {
+    dbName: DB_NAME,
     serverSelectionTimeoutMS: 10000,
     socketTimeoutMS: 45000,
     maxPoolSize: 10,
