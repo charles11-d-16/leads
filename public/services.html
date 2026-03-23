@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techstacks IT Web Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="styles.css">
+<script src="scriptinquiry.js"></script>
+</head>
+<body data-theme="dark">
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close" style="display:none;">&times;</span>
+    <h2>Inquiry Submitted</h2>
+    <p id="modalMessage"></p>
+    <button id="okButton" class="btn-ok">OK</button>
+  </div>
+</div>
+<div class="parallax">
+<div class="layer l1" data-speed="0.08"></div>
+<div class="layer l2" data-speed="0.16"></div>
+<div class="layer l3" data-speed="0.3"></div>
+</div>
+<header>
+<div class="nav">
+<div class="brand" onclick="window.scrollTo(0,0)">
+  <img src="greenlogo.png" alt="Logo" class="brand-logo">
+  <span>Techstacks</span>
+</div>
+<button class="menu-trigger" id="menuBtn">Menu</button>
+<nav id="navMenu">
+<a href="/#home" class="nav-link">Home</a>
+<a href="/services.html" class="nav-link">Services</a>
+<div class="nav-item dropdown">
+    <a href="#" class="nav-link">Products <i class="bi bi-chevron-down dropdown-arrow"></i></a>
+    <div class="dropdown-content">
+        <a href="/web-templates.html" class="dropdown-item">
+            <div class="dropdown-icon-box"><i class="bi bi-layout-text-window-reverse"></i></div>
+            <div class="dropdown-text">
+                <span class="dropdown-title">Web Templates</span>
+                <span class="dropdown-desc">Premium UI designs</span>
+            </div>
+        </a>
+        <a href="led-wall.html" class="dropdown-item">
+            <div class="dropdown-icon-box"><i class="bi bi-display"></i></div>
+            <div class="dropdown-text">
+                <span class="dropdown-title">LED Wall P3.91</span>
+                <span class="dropdown-desc">Visual solutions</span>
+            </div>
+        </a>
+    </div>
+</div>
+<a href="contact/public/index.html" class="nav-link contact-btn">Get in Touch</a>
+<div class="theme-control">
+    <button class="theme-btn" data-theme="dark" title="Dark Mode">&#xf494;</button>
+    <button class="theme-btn" data-theme="light" title="Light Mode">&#xf1d1;</button>
+    <button class="theme-btn" data-theme="system" title="System Theme">&#xf301;</button>
+</div>
+</nav>
+</div>
+</header>
+<main>
+</section>
+<section id="why">
+<div class="section-inner services-area" id="servicesBlock">
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="services-title" id="servicesHeader">
+    <h2>Why <span>Choose Us</span></h2>
+    <p>We deliver reliable, scalable, and future-ready digital solutions built with modern technologies.</p>
+</div>
+<div class="dynamic-line-container" id="servicesLine">
+    <div class="dynamic-line"></div>
+</div>
+<div class="features">
+<div class="card" id="card1">
+    <div class="pop-out-layer"></div>
+    <div class="front">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6M12 4.5l-2 15"/></svg></div>
+        <h3>Web & App Development</h3>
+        <p>Custom digital platforms.</p>
+    </div>
+    <div class="detail"><h3>Full Stack</h3><p>Robust applications from concept to deployment.</p></div>
+</div>
+<div class="card" id="card2">
+    <div class="pop-out-layer"></div>
+    <div class="front">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 11-4-4 4 4 0 014 4zm14 14v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg></div>
+        <h3>Dev Team as a Service</h3>
+        <p>On-demand engineering teams.</p>
+    </div>
+    <div class="detail"><h3>Dedicated Teams</h3><p>Seamless integration with your workflow.</p></div>
+</div>
+<div class="card" id="card3">
+    <div class="pop-out-layer"></div>
+    <div class="front">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <h3>Website Maintenance</h3>
+        <p>Performance and stability.</p>
+    </div>
+    <div class="detail"><h3>Continuous Care</h3><p>Updates, monitoring, and optimization.</p></div>
+</div>
+<div class="card" id="card4">
+    <div class="pop-out-layer"></div>
+    <div class="front">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM12 8v4M12 16h.01"/></svg></div>
+        <h3>Cybersecurity Services</h3>
+        <p>Protect systems and data.</p>
+    </div>
+    <div class="detail"><h3>Security First</h3><p>Threat prevention and system hardening.</p></div>
+</div>
+</div>
+<div class="template-trigger-container">
+    <a href="web-templates.html" class="view-templates-btn">
+        Explore Website Templates <i class="bi bi-arrow-right"></i>
+    </a>
+    
+    <div class="templates-preview-lane">
+        <div class="template-card">
+            <img src="img/temp1.webp" alt="Sample Template">
+            <div class="card-overlay">
+                <span>Sample Template</span>
+                <a href="web-templates.html" class="proceed-link">Inquire</a>33
+            </div>
+        </div>
+        <div class="template-card">
+            <img src="img/temp2.webp" alt="Sample Template">
+            <div class="card-overlay">
+                <span>Sample Website</span>
+                <a href="web-templates.html" class="proceed-link">Inquire</a>
+            </div>
+        </div>
+        <div class="template-card">
+            <img src="img/temp3.webp" alt="Sample Template">
+            <div class="card-overlay">
+                <span>Sample Website</span>
+                <a href="web-templates.html" class="proceed-link">Inquire</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+</main>
+    <script>
+const menuBtn = document.getElementById('menuBtn');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+if (menuBtn && navMenu) {
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        menuBtn.textContent = navMenu.classList.contains('open') ? 'Close' : 'Menu';
+    });
+}
+
+navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+        if (navMenu && navMenu.classList.contains('open')) {
+            navMenu.classList.remove('open');
+            if (menuBtn) menuBtn.textContent = 'Menu';
+        }
+    });
+});
+
+// Dropdown hover delay (keeps menu open while moving cursor into it)
+const dropdown = document.querySelector('.nav-item.dropdown');
+let dropdownCloseTimer;
+if (dropdown) {
+    dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(dropdownCloseTimer);
+        dropdown.classList.add('open');
+    });
+    dropdown.addEventListener('mouseleave', () => {
+        dropdownCloseTimer = setTimeout(() => dropdown.classList.remove('open'), 200);
+    });
+}
+
+// Theme (dark/light/system)
+const root = document.documentElement;
+const themeBtns = document.querySelectorAll('.theme-btn');
+const STORAGE_KEY = 'preferred-theme';
+
+function resolveTheme(preferred) {
+    if (preferred === 'system') {
+        return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+    return preferred === 'light' ? 'light' : 'dark';
+}
+
+function applyPreferredTheme(preferred, options = {}) {
+    const theme = resolveTheme(preferred);
+    root.setAttribute('data-theme', theme);
+
+    themeBtns.forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.theme === preferred);
+    });
+
+    if (options.persist !== false) {
+        try { localStorage.setItem(STORAGE_KEY, preferred); } catch (e) {}
+    }
+}
+
+let preferred = 'dark';
+try { preferred = localStorage.getItem(STORAGE_KEY) || 'dark'; } catch (e) {}
+applyPreferredTheme(preferred, { persist: false });
+
+themeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => applyPreferredTheme(btn.dataset.theme));
+});
+
+if (window.matchMedia) {
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const onChange = () => {
+        let current = 'dark';
+        try { current = localStorage.getItem(STORAGE_KEY) || 'dark'; } catch (e) {}
+        if (current === 'system') applyPreferredTheme('system', { persist: false });
+    };
+
+    if (typeof mql.addEventListener === 'function') mql.addEventListener('change', onChange);
+    else if (typeof mql.addListener === 'function') mql.addListener(onChange);
+}
+
+
+// Reveal sections + parallax + services animations (copied from index.html)
+const layers = document.querySelectorAll('.layer');
+const mainSections = document.querySelectorAll('main section');
+const servicesBlock = document.getElementById('servicesBlock');
+const servicesHeader = document.getElementById('servicesHeader');
+const servicesLine = document.getElementById('servicesLine');
+const serviceCards = document.querySelectorAll('.card');
+const glow = document.getElementById('cursorGlow');
+
+let servicesCardsTriggered = false;
+
+function updateScrollEffects() {
+    const s = window.scrollY;
+
+    layers.forEach((l) => {
+        const speed = parseFloat(l.dataset.speed || '0');
+        l.style.transform = `translateY(${s * speed}px)`;
+    });
+
+    mainSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const trigger = window.innerHeight * 0.85;
+        const exit = -rect.height * 0.15;
+        if (rect.top < trigger && rect.bottom > exit) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    });
+
+    if (servicesHeader) {
+        const headerRect = servicesHeader.getBoundingClientRect();
+        if (headerRect.top < window.innerHeight - 100) {
+            servicesHeader.classList.add('active');
+        }
+    }
+
+    if (servicesLine) {
+        const lineRect = servicesLine.getBoundingClientRect();
+        if (lineRect.top < window.innerHeight - 150) {
+            servicesLine.classList.add('active');
+
+            if (!servicesCardsTriggered) {
+                servicesCardsTriggered = true;
+                const shuffleOrder = [1, 2, 0, 3];
+                shuffleOrder.forEach((originalIdx, orderIdx) => {
+                    const card = serviceCards[originalIdx];
+                    if (!card) return;
+                    setTimeout(() => {
+                        card.classList.add('active');
+                    }, 400 + (orderIdx * 150));
+                });
+            }
+        }
+    }
+}
+
+window.addEventListener('scroll', updateScrollEffects, { passive: true });
+updateScrollEffects();
+
+if (servicesBlock && glow) {
+    servicesBlock.addEventListener('mousemove', (e) => {
+        if (window.innerWidth <= 900) return;
+        const r = servicesBlock.getBoundingClientRect();
+        glow.style.left = (e.clientX - r.left) + 'px';
+        glow.style.top = (e.clientY - r.top) + 'px';
+        glow.style.opacity = 1;
+    });
+
+    servicesBlock.addEventListener('mouseleave', () => {
+        glow.style.opacity = 0;
+    });
+}
+</script>
+</body>
+</html>
+

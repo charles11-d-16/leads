@@ -1,0 +1,227 @@
+.contact-page-wrapper { background: transparent; position: relative; z-index: 10; overflow: hidden; }
+.ask-me-container { display: flex; max-width: 1200px; width: 100%; gap: 80px; align-items: center; position: relative; perspective: 2000px; }
+.ask-me-graphics { flex: 1; position: relative; height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center; transform-style: preserve-3d; z-index: 10; }
+.robot-head {
+    width: 280px;
+    height: 280px;
+    position: relative;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    margin-bottom: 60px;
+}
+.robot-face {
+    position: absolute;
+    inset: 0;
+    background: rgba(67, 243, 208, 0.05);
+    border: 3px solid var(--primary);
+    border-radius: 60px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(67, 243, 208, 0.2), inset 0 0 20px rgba(67, 243, 208, 0.1);
+    transform: translateZ(20px);
+}
+[data-theme="light"] .robot-face {
+    background: rgba(13, 148, 136, 0.1);
+    border-color: var(--primary);
+}
+.robot-eyes {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+.eye {
+    width: 45px;
+    height: 45px;
+    background: var(--robot-eye-bg);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px var(--primary);
+}
+.pupil {
+    width: 18px;
+    height: 18px;
+    background: var(--primary);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px #fff;
+    transition: width 0.3s, height 0.3s;
+}
+[data-theme="light"] .pupil {
+    background: #fff;
+    box-shadow: 0 0 10px var(--primary);
+}
+.lid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    transform: translateY(-100%);
+    transition: transform 0.1s ease-in-out;
+    z-index: 5;
+    opacity: 0.9;
+}
+.eye.blinking .lid {
+    transform: translateY(0%);
+}
+.robot-mouth {
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 10px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    box-shadow: 0 0 10px var(--primary);
+    transform: translateY(10px);
+}
+.robot-head.smiling .robot-mouth {
+    opacity: 1;
+    height: 25px;
+    width: 80px;
+    border-radius: 0 0 40px 40px;
+    transform: translateY(5px);
+}
+.robot-hand {
+    position: absolute;
+    bottom: -10px;
+    right: -50px;
+    width: 70px;
+    height: 70px;
+    background: var(--primary);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v5'/%3E%3Cpath d='M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v10'/%3E%3Cpath d='M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8'/%3E%3Cpath d='M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15'/%3E%3C/svg%3E");
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    z-index: 30;
+}
+.robot-hand.waving {
+    opacity: 1;
+    transform: scale(1.2) rotate(-10deg);
+    animation: wave-hand 0.8s ease-in-out infinite alternate;
+}
+@keyframes wave-hand {
+    0% { transform: scale(1.2) rotate(-20deg); }
+    100% { transform: scale(1.2) rotate(20deg); }
+}
+.speech-bubble {
+    position: absolute;
+    top: -70px;
+    background: var(--primary);
+    color: #000;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 800;
+    font-size: 16px;
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 40;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.speech-bubble.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: var(--primary) transparent transparent;
+}
+.ask-me-text-3d { font-size: 5rem; font-weight: 900; text-transform: uppercase; color: var(--text); line-height: 1; letter-spacing: -2px; z-index: 2; transition: transform 0.1s ease-out; text-align: center; margin-top: 20px; }
+.ask-me-text-3d span:first-child {
+    color: #15f5ba;
+}
+.ask-me-text-3d span:last-child {
+    background: linear-gradient(135deg, #15f5ba, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .ask-me-text-3d { color: var(--muted); opacity: 0.8; }
+.form-wrap { flex: 1.2; max-width: 600px; width: 100%; background: var(--card-bg); border: 1px solid var(--border); border-radius: 40px; padding: 60px 50px; backdrop-filter: blur(30px); transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease; box-shadow: var(--form-glow); transform-style: preserve-3d; will-change: transform, opacity; z-index: 20; position: relative; }
+[data-theme="dark"] .form-wrap { background: rgba(5, 11, 10, 0.85); }
+[data-theme="light"] .form-wrap { background: rgba(255, 255, 255, 0.7); }
+.field { display: flex; flex-direction: column; margin-bottom: 24px; transform: translateZ(20px); }
+.field label { font-size: 12px; color: var(--muted); margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.field input, .field textarea, .field select { padding: 18px; border-radius: 18px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); font-size: 14px; transition: all .3s ease; outline: none; width: 100%; }
+.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--primary); background: transparent; box-shadow: 0 0 15px rgba(67, 243, 208, 0.1); }
+.field select { 
+    appearance: none; 
+    cursor: pointer; 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2343f3d0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E") !important; 
+    background-repeat: no-repeat !important; 
+    background-position: calc(100% - 22px) center !important;
+    font-family: 'Inter', 'bootstrap-icons', sans-serif;
+    padding-right: 45px;
+    position: relative;
+    z-index: 5;
+    background-color: var(--input-bg);
+}
+.field select option {
+    background: var(--dropdown-bg);
+    color: var(--text);
+    padding: 12px;
+}
+[data-theme="light"] .field select { 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%230d9488' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E") !important; 
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text);
+    -webkit-box-shadow: 0 0 0px 1000px var(--autofill-bg) inset;
+    transition: background-color 5000s ease-in-out 0s;
+    border: 1px solid var(--primary);
+}
+
+/* Glow effect used in contact-page-wrapper */
+.cursor-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(67, 243, 208, 0.15) 0%, rgba(67, 243, 208, 0.05) 40%, transparent 70%);
+    filter: blur(50px);
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity .4s ease;
+    z-index: 1;
+}
+
+/* Small glitter particles used by the robot effect */
+.glitter {
+    position: absolute;
+    background: rgba(67, 243, 208, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.9;
+    filter: blur(3px);
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+}

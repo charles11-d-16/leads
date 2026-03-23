@@ -29,8 +29,8 @@ const inquirySchema = new mongoose.Schema({
   company: { type: String },
 
   // Template inquiry extras (optional)
-  template_website: { type: String },
-  template_mobile: { type: String },
+  template_type: { type: String, enum: ['website', 'mobile'], default: 'website' },
+  template_image: { type: String },
 });
 
 inquirySchema.pre('save', async function () {
@@ -57,4 +57,3 @@ inquirySchema.pre('save', async function () {
 });
 
 module.exports = mongoose.model('Inquiry', inquirySchema);
-

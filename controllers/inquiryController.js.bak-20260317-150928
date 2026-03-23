@@ -4,7 +4,7 @@ const StatusHistory = require('../models/StatusHistory');
 exports.submitInquiry = async (req, res) => {
   try {
     // Defaults only for template inquiries (inquiry.html).
-    const isTemplateInquiry = Boolean(req.body.template_website) || Boolean(req.body.template_mobile) || Boolean(req.body.template_image) || req.body.concern_type === 'template inquiry';
+    const isTemplateInquiry = Boolean(req.body.template_image) || req.body.concern_type === 'template inquiry';
     const discovery_platform = req.body.discovery_platform || (isTemplateInquiry ? 'other' : undefined);
     const concern_type = req.body.concern_type || (isTemplateInquiry ? 'template inquiry' : undefined);
 
@@ -14,9 +14,10 @@ exports.submitInquiry = async (req, res) => {
       discovery_platform,
       concern_type,
       message: req.body.message,
+
       // Optional: only present for template inquiries.
-      template_website: req.body.template_website || req.body.template_image,
-      template_mobile: req.body.template_mobile || req.body.template_image,
+      template_type: req.body.template_type,
+      template_image: req.body.template_image,
     });
 
     await inquiry.save();
@@ -56,6 +57,4 @@ exports.submitInquiry = async (req, res) => {
     return res.status(500).json({ success: false, error: error.message });
   }
 };
-
-
 

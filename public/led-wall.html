@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Wall P3.91 - Techstacks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Match the hover lift + glow used by .btn in styles.css */
+        .installment-badge { transition: .35s; }
+        .installment-badge:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 10px 30px rgba(67, 243, 208, 0.4);
+        }
+    </style></head>
+<body>
+<header>
+    <div class="nav">
+        <div class="brand" onclick="window.location.href='/'">
+            <img src="greenlogo.png" alt="Logo" class="brand-logo">
+            <span>Techstacks</span>
+        </div>
+        <button class="menu-trigger" id="menuBtn" type="button">Menu</button>
+        <nav id="navMenu">
+            <a href="/#home" class="nav-link">Home</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link">Products <i class="bi bi-chevron-down dropdown-arrow"></i></a>
+                <div class="dropdown-content">
+                    <a href="web-templates.html" class="dropdown-item">
+                        <div class="dropdown-icon-box"><i class="bi bi-layout-text-window-reverse"></i></div>
+                        <div class="dropdown-text">
+                            <span class="dropdown-title">Web Templates</span>
+                            <span class="dropdown-desc">Premium UI designs</span>
+                        </div>
+                    </a>
+                    <a href="led-wall.html" class="dropdown-item">
+                        <div class="dropdown-icon-box"><i class="bi bi-display"></i></div>
+                        <div class="dropdown-text">
+                            <span class="dropdown-title">LED Wall P3.91</span>
+                            <span class="dropdown-desc">Visual solutions</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <a href="contact/public/index.html" class="nav-link contact-btn">Get in Touch</a>
+            <div class="theme-control">
+                <button class="theme-btn" data-theme="dark" title="Dark Mode">&#xf494;</button>
+                <button class="theme-btn" data-theme="light" title="Light Mode">&#xf1d1;</button>
+                <button class="theme-btn" data-theme="system" title="System Theme">&#xf301;</button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main>
+<section class="product-section visible" id="productShowcase">
+    <div class="product-container">
+        <div class="product-img left" id="productLeft">
+            <img src="left.png" alt="LED Wall Left View">
+        </div>
+        <div class="product-content" id="productText">
+            <h2 id="prodTitle">
+                <div class="title-row">
+                    <span>LED</span> <span class="wall-text">Wall</span>
+                </div>
+                <span class="model-text">
+                    <i class="bi bi-stars shine-icon shine-prod-tl"></i>
+                    P3.91
+                    <i class="bi bi-stars shine-icon shine-prod-br"></i>
+                </span>
+            </h2>
+            <p id="prodDesc">Next-generation high-definition visual solutions. Includes end-to-end installation, configuration, and ongoing maintenance for seamless enterprise integration.</p>
+            <a class="installment-badge" id="prodBadge" href="contact/public/index.html?concern_type=led%20wall#contact" role="button" style="text-decoration:none;">Now available in installments</a>
+        </div>
+        <div class="product-img right" id="productRight">
+            <img src="right.png" alt="LED Wall Right View">
+        </div>
+    </div>
+</section>
+</main>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+if (menuBtn && navMenu) {
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        menuBtn.textContent = navMenu.classList.contains('open') ? 'Close' : 'Menu';
+    });
+}
+
+navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+        if (navMenu && navMenu.classList.contains('open')) {
+            navMenu.classList.remove('open');
+            if (menuBtn) menuBtn.textContent = 'Menu';
+        }
+    });
+});
+
+// Dropdown hover delay (keeps menu open while moving cursor into it)
+const dropdown = document.querySelector('.nav-item.dropdown');
+let dropdownCloseTimer;
+if (dropdown) {
+    dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(dropdownCloseTimer);
+        dropdown.classList.add('open');
+    });
+    dropdown.addEventListener('mouseleave', () => {
+        dropdownCloseTimer = setTimeout(() => dropdown.classList.remove('open'), 200);
+    });
+}
+
+// Theme (dark/light/system)
+const root = document.documentElement;
+const themeBtns = document.querySelectorAll('.theme-btn');
+const STORAGE_KEY = 'preferred-theme';
+
+function resolveTheme(preferred) {
+    if (preferred === 'system') {
+        return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+    return preferred === 'light' ? 'light' : 'dark';
+}
+
+function applyPreferredTheme(preferred, options = {}) {
+    const theme = resolveTheme(preferred);
+    root.setAttribute('data-theme', theme);
+
+    themeBtns.forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.theme === preferred);
+    });
+
+    if (options.persist !== false) {
+        try { localStorage.setItem(STORAGE_KEY, preferred); } catch (e) {}
+    }
+}
+
+let preferred = 'dark';
+try { preferred = localStorage.getItem(STORAGE_KEY) || 'dark'; } catch (e) {}
+applyPreferredTheme(preferred, { persist: false });
+
+themeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => applyPreferredTheme(btn.dataset.theme));
+});
+
+if (window.matchMedia) {
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const onChange = () => {
+        let current = 'dark';
+        try { current = localStorage.getItem(STORAGE_KEY) || 'dark'; } catch (e) {}
+        if (current === 'system') applyPreferredTheme('system', { persist: false });
+    };
+
+    if (typeof mql.addEventListener === 'function') mql.addEventListener('change', onChange);
+    else if (typeof mql.addListener === 'function') mql.addListener(onChange);
+}
+
+// Product showcase animation (copied from index.html)
+(function initProductShowcase() {
+    const productShowcase = document.getElementById('productShowcase');
+    const productLeft = document.getElementById('productLeft');
+    const productRight = document.getElementById('productRight');
+    const prodTitle = document.getElementById('prodTitle');
+    const prodDesc = document.getElementById('prodDesc');
+    const prodBadge = document.getElementById('prodBadge');
+
+    if (!productShowcase || !productLeft || !productRight || !prodTitle || !prodDesc || !prodBadge) return;
+
+    const onScroll = () => {
+        const pRect = productShowcase.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const progress = Math.min(1, Math.max(0, (windowHeight - pRect.top) / (windowHeight * 0.7)));
+
+        if (window.innerWidth > 1000) {
+            const xOffset = 150 * (1 - progress);
+            productLeft.style.transform = `translateX(${-xOffset}px) scale(${0.85 + (0.15 * progress)})`;
+            productLeft.style.opacity = progress;
+            productRight.style.transform = `translateX(${xOffset}px) scale(${0.85 + (0.15 * progress)})`;
+            productRight.style.opacity = progress;
+            prodTitle.style.transform = `translateY(${30 - (30 * progress)}px)`;
+            prodTitle.style.opacity = progress;
+            prodDesc.style.transform = `translateY(${20 - (20 * progress)}px)`;
+            prodDesc.style.opacity = progress;
+            prodBadge.style.transform = `translateY(${15 - (15 * progress)}px)`;
+            prodBadge.style.opacity = progress;
+        }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+</body>
+</html>
+
+
+

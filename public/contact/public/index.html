@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techstacks IT Web Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="styles.css">
+<script src="/scriptinquiry.js"></script>
+</head>
+<body data-theme="dark">
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close" style="display:none;">&times;</span>
+    <h2>Inquiry Submitted</h2>
+    <p id="modalMessage"></p>
+    <button id="okButton" class="btn-ok">OK</button>
+  </div>
+</div>
+<div class="parallax">
+<div class="layer l1" data-speed="0.08"></div>
+<div class="layer l2" data-speed="0.16"></div>
+<div class="layer l3" data-speed="0.3"></div>
+</div>
+<header>
+<div class="nav">
+<div class="brand" onclick="window.scrollTo(0,0)">
+  <img src="greenlogo.png" alt="Logo" class="brand-logo">
+  <span>Techstacks</span>
+</div>
+<button class="menu-trigger" id="menuBtn">Menu</button>
+<nav id="navMenu">
+<a href="/" class="nav-link">Home</a>
+<a href="/services.html" class="nav-link">Services</a>
+<div class="nav-item dropdown">
+    <a href="#" class="nav-link">Products <i class="bi bi-chevron-down dropdown-arrow"></i></a>
+    <div class="dropdown-content">
+        <a href="/web-templates.html" class="dropdown-item">
+            <div class="dropdown-icon-box"><i class="bi bi-layout-text-window-reverse"></i></div>
+            <div class="dropdown-text">
+                <span class="dropdown-title">Web Templates</span>
+                <span class="dropdown-desc">Premium UI designs</span>
+            </div>
+        </a>
+        <a href="/led-wall.html" class="dropdown-item">
+            <div class="dropdown-icon-box"><i class="bi bi-display"></i></div>
+            <div class="dropdown-text">
+                <span class="dropdown-title">LED Wall P3.91</span>
+                <span class="dropdown-desc">Visual solutions</span>
+            </div>
+        </a>
+    </div>
+</div>
+<a href="/contact/public/index.html" class="nav-link contact-btn">Get in Touch</a>
+<div class="theme-control">
+    <button class="theme-btn" data-theme="dark" title="Dark Mode">&#xf494;</button>
+    <button class="theme-btn" data-theme="light" title="Light Mode">&#xf1d1;</button>
+    <button class="theme-btn" data-theme="system" title="System Theme">&#xf301;</button>
+</div>
+</nav>
+</div>
+</header>
+<!--
+<section class="hero visible" id="home">
+<div class="wave-container">
+<div class="wave wave1"></div>
+<div class="wave wave2"></div>
+<div class="wave wave3"></div>
+</div>
+<div class="hero-inner">
+<div>
+<h1>Building intelligent, scalable digital experiences for the <span class="ai-gradient">AI Era.</span></h1>
+<p>We construct reliable, future-proof web ecosystems — combining cutting-edge design, resilient enterprise architectures, and intelligent automation.</p>
+<div class="cta">
+<a class="btn primary" href="#contact">Start a Project</a>
+<a class="btn" href="#services">Explore Capabilities</a>
+</div>
+</div>
+<div class="logo-stage">
+<div class="logo-3d" id="logo3d">
+    <video id="heroVideo" autoplay loop muted playsinline>
+        <source id="heroVideoSource" src="black logo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+</div>
+</div>
+</section>
+<section id="services">
+<div class="section-inner services-area" id="servicesBlock">
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="services-title" id="servicesHeader">
+<h2>Our <span>Core Services</span></h2>
+<p>Engineered digital solutions built for scale, security, and performance.</p>
+</div>
+<div class="dynamic-line-container" id="servicesLine">
+    <div class="dynamic-line"></div>
+</div>
+<div class="features">
+<div class="card" id="card1">
+    <div class="pop-out-layer"></div>
+    <div class="front">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6M12 4.5l-2 15"/></svg></div>
+        <h3>Web & App Development</h3>
+        <p>Custom digital platforms.</p>
+    </div>
+    <div class="detail"><h3>Full Stack</h3><p>Robust applications from concept to deployment.</p></div>
+</div>
+<div class="card" id="card2">
+    <div class="pop-out-layer"></div>
+    <div class="front">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 11-4-4 4 4 0 014 4zm14 14v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg></div>
+        <h3>Dev Team as a Service</h3>
+        <p>On-demand engineering teams.</p>
+    </div>
+    <div class="detail"><h3>Dedicated Teams</h3><p>Seamless integration with your workflow.</p></div>
+</div>
+<div class="card" id="card3">
+    <div class="pop-out-layer"></div>
+    <div class="front">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <h3>Website Maintenance</h3>
+        <p>Performance and stability.</p>
+    </div>
+    <div class="detail"><h3>Continuous Care</h3><p>Updates, monitoring, and optimization.</p></div>
+</div>
+<div class="card" id="card4">
+    <div class="pop-out-layer"></div>
+    <div class="front">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM12 8v4M12 16h.01"/></svg></div>
+        <h3>Cybersecurity Services</h3>
+        <p>Protect systems and data.</p>
+    </div>
+    <div class="detail"><h3>Security First</h3><p>Threat prevention and system hardening.</p></div>
+</div>
+</div>
+</div>
+</section>
+<section class="product-section" id="productShowcase">
+    <div class="product-container">
+        <div class="product-img left" id="productLeft">
+            <img src="left.png" alt="LED Wall Left View">
+        </div>
+        <div class="product-content" id="productText">
+            <h2 id="prodTitle">
+                <div class="title-row">
+                    <span>LED</span> <span class="wall-text">Wall</span>
+                </div>
+                <span class="model-text">
+                    <i class="bi bi-stars shine-icon shine-prod-tl"></i>
+                    P3.91
+                    <i class="bi bi-stars shine-icon shine-prod-br"></i>
+                </span>
+            </h2>
+            <p id="prodDesc">Next-generation high-definition visual solutions. Includes end-to-end installation, configuration, and ongoing maintenance for seamless enterprise integration.</p>
+            <div class="installment-badge" id="prodBadge">Now available in installments</div>
+        </div>
+        <div class="product-img right" id="productRight">
+            <img src="right.png" alt="LED Wall Right View">
+        </div>
+    </div>
+</section>
+<section id="testimonials" class="testimonials-section">
+    <div class="section-inner testimonials-area" id="testimonialsBlock">
+        <div class="testimonials-title">
+            <h2>
+                <i class="bi bi-stars shine-icon shine-tl"></i>
+                Client <span>Success Stories</span>
+                <i class="bi bi-stars shine-icon shine-br"></i>
+            </h2>
+        </div>
+        <div class="testimonials-wrapper">
+            <div class="testimonial-container" id="testimonialSlider">
+                <div class="testimonial-item active">
+                    <p class="testimonial-text">"Techstacks completed the task in great detail. They were proactive and took initiatives."</p>
+                    <p class="testimonial-author">Don — CEO | NextPay PH</p>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"One of the best agencies we've ever worked with. Solid work that is very responsive."</p>
+                    <p class="testimonial-author">Peter — CTO | Release Media Inc</p>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"I had coding problem with website i was developing that Techstacks helped me to resolve."</p>
+                    <p class="testimonial-author">Rheanna — Owner | Fancypants Design Co</p>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Great service and knowledge with GatsbyJs."</p>
+                    <p class="testimonial-author">Adolfo Jimenez — DeDiabetes.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bars" id="progressBars">
+            <div class="bar active"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="slider-nav">
+            <button class="slider-btn" id="prevBtn">
+                <div class="double-arrow">
+                    <i class="bi bi-chevron-left faded-arrow"></i>
+                    <i class="bi bi-chevron-left"></i>
+                </div>
+            </button>
+            <button class="slider-btn" id="nextBtn">
+                <div class="double-arrow">
+                    <i class="bi bi-chevron-right"></i>
+                    <i class="bi bi-chevron-right faded-arrow"></i>
+                </div>
+            </button>
+        </div>
+    </div>
+</section>
+-->
+<div class="contact-page-wrapper">
+<section id="contact">
+    <div class="section-inner ask-me-container">
+        <div class="ask-me-graphics" id="askMeArea">
+            <div class="speech-bubble" id="robotBubble">Talk to me!</div>
+            <div class="robot-head" id="robotHead">
+                <div class="robot-face">
+                    <div class="robot-eyes">
+                        <div class="eye"><div class="lid"></div><div class="pupil"></div></div>
+                        <div class="eye"><div class="lid"></div><div class="pupil"></div></div>
+                    </div>
+                    <div class="robot-mouth"></div>
+                </div>
+                <div class="robot-hand" id="robotHand"></div>
+            </div>
+            <div class="ask-me-text-3d" id="askMeLabel"><span>Get </span>In <span>Touch</span></div>
+        </div>
+        <div class="form-wrap" id="inquiryForm">
+            <h2 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; color: var(--text);">Client Inquiry</h2>
+            <p style="color:var(--muted); margin-bottom: 35px; line-height: 1.6; font-weight: 500;">Reach out to us now and let's explore how we can meet your requirements and support your online growth.</p>
+           <form id="mainInquiryForm" action="/inquiry/submit" method="POST">
+<div class="field"><label>Full Name</label><input name="full_name" placeholder="Enter your name" required></div>
+  <div class="field"><label>Email</label><input name="email" type="email" placeholder="juandelacruz@gmail.com" required></div>
+  <div class="field">
+    <label>How did you discover us?</label>
+    <select name="discovery_platform" required>
+                        <option value="" disabled selected>Select a platform</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="referral">Referral</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Type of Concern / Inquiry</label>
+                    <select name="concern_type" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="led wall">LED Wall Inquiry</option>
+                        <option value="proposal">Project Proposal</option>
+                        <option value="maintenance">Maintenance Support</option>
+                        <option value="security">Security Consultation</option>
+                        <option value="general">General Inquiry</option>
+                    </select>
+                </div>
+               <div class="field"><label>Message</label><textarea name="message" rows="4" placeholder="How can we help you?" required></textarea></div>
+              <button type="submit" class="btn primary" style="width: 100%; height: 60px; font-size: 16px; transform: translateZ(30px);">Send Inquiry</button>
+         </form>
+        </div>
+    </div>
+</section>
+</div>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo(0,0)"><i class="bi bi-arrow-up-short"></i></button>
+<footer>Copyright © 2026 Techstacks | All Rights Reserved.</footer>
+<script>
+const root = document.documentElement;
+const menuBtn = document.getElementById('menuBtn');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section');
+const themeBtns = document.querySelectorAll('.theme-btn');
+const backToTop = document.getElementById('backToTop');
+menuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+    menuBtn.textContent = navMenu.classList.contains('open') ? 'Close' : 'Menu';
+});
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if(navMenu.classList.contains('open')) {
+            navMenu.classList.remove('open');
+            menuBtn.textContent = 'Menu';
+        }
+    });
+});
+
+// Dropdown hover delay (keeps menu open while moving cursor into it)
+const dropdown = document.querySelector('.nav-item.dropdown');
+let dropdownCloseTimer;
+if (dropdown) {
+    dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(dropdownCloseTimer);
+        dropdown.classList.add('open');
+    });
+    dropdown.addEventListener('mouseleave', () => {
+        dropdownCloseTimer = setTimeout(() => dropdown.classList.remove('open'), 200);
+    });
+}
+function highlightNav() {
+    let currentSection = 'home';
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 150) currentSection = section.id;
+    });
+    const isAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200;
+    if (isAtBottom) currentSection = 'contact';
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === currentSection) link.classList.add('active');
+    });
+    if (window.scrollY > 400) backToTop.classList.add('show');
+    else backToTop.classList.remove('show');
+}
+function setTheme(theme) {
+    let activeTheme = theme;
+    if (theme === 'system') {
+        activeTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    root.setAttribute('data-theme', activeTheme);
+    localStorage.setItem('preferred-theme', theme);
+    const video = document.getElementById('heroVideo');
+    const source = document.getElementById('heroVideoSource');
+    const newSrc = activeTheme === 'light' ? 'white logo.mp4' : 'black logo.mp4';
+    if (video && source && source.getAttribute('src') !== newSrc) {
+        source.setAttribute('src', newSrc);
+        video.load();
+        video.play();
+    }
+    themeBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.theme === theme);
+    });
+}
+themeBtns.forEach(btn => {
+    btn.addEventListener('click', () => setTheme(btn.dataset.theme));
+});
+const savedTheme = localStorage.getItem('preferred-theme') || 'dark';
+setTheme(savedTheme);
+const testimonialItems = document.querySelectorAll('.testimonial-item');
+const bars = document.querySelectorAll('.bar');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+if (testimonialItems.length && prevBtn && nextBtn) {
+    let testimonialIndex = 0;
+    function updateTestimonials() {
+        testimonialItems.forEach((item, i) => {
+            item.classList.remove('active', 'prev', 'next');
+            if (i === testimonialIndex) item.classList.add('active');
+            else if (i === (testimonialIndex - 1 + testimonialItems.length) % testimonialItems.length) item.classList.add('prev');
+            else if (i === (testimonialIndex + 1) % testimonialItems.length) item.classList.add('next');
+        });
+        bars.forEach((bar, i) => {
+            bar.classList.toggle('active', i === testimonialIndex);
+        });
+    }
+    nextBtn.addEventListener('click', () => {
+        testimonialIndex = (testimonialIndex + 1) % testimonialItems.length;
+        updateTestimonials();
+    });
+    prevBtn.addEventListener('click', () => {
+        testimonialIndex = (testimonialIndex - 1 + testimonialItems.length) % testimonialItems.length;
+        updateTestimonials();
+    });
+    updateTestimonials();
+    setInterval(() => {
+        testimonialIndex = (testimonialIndex + 1) % testimonialItems.length;
+        updateTestimonials();
+    }, 5000);
+}
+const layers = document.querySelectorAll('.layer');
+const servicesBlock = document.getElementById('servicesBlock');
+const servicesHeader = document.getElementById('servicesHeader');
+const servicesLine = document.getElementById('servicesLine');
+const serviceCards = document.querySelectorAll('.card');
+const testimonialsBlock = document.getElementById('testimonialsBlock');
+const inquiryForm = document.getElementById('inquiryForm');
+const askMeLabel = document.getElementById('askMeLabel');
+const robotHead = document.getElementById('robotHead');
+const robotBubble = document.getElementById('robotBubble');
+const robotHand = document.getElementById('robotHand');
+const pupils = document.querySelectorAll('.pupil');
+const eyes = document.querySelectorAll('.eye');
+const formInputs = inquiryForm.querySelectorAll('input, textarea, select');
+const productLeft = document.getElementById('productLeft');
+const productRight = document.getElementById('productRight');
+const prodTitle = document.getElementById('prodTitle');
+const prodDesc = document.getElementById('prodDesc');
+const prodBadge = document.getElementById('prodBadge');
+let robotAwake = false;
+let isSmiling = false;
+let firstRobotClick = true;
+window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    highlightNav();
+    layers.forEach(l => l.style.transform = `translateY(${s * l.dataset.speed}px)`);
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const trigger = window.innerHeight * 0.85;
+        const exit = -rect.height * 0.15;
+        if (rect.top < trigger && rect.bottom > exit) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    });
+    if (servicesHeader) {
+        const headerRect = servicesHeader.getBoundingClientRect();
+        if(headerRect.top < window.innerHeight - 100) {
+            servicesHeader.classList.add('active');
+        }
+    }
+    if (servicesLine && serviceCards.length >= 4) {
+        const lineRect = servicesLine.getBoundingClientRect();
+        if(lineRect.top < window.innerHeight - 150) {
+            servicesLine.classList.add('active');
+            const shuffleOrder = [1, 2, 0, 3];
+            shuffleOrder.forEach((originalIdx, orderIdx) => {
+                const card = serviceCards[originalIdx];
+                if (!card) return;
+                setTimeout(() => {
+                    card.classList.add('active');
+                }, 400 + (orderIdx * 150));
+            });
+        }
+    }
+    const productShowcase = document.getElementById('productShowcase');
+    if (productShowcase && productLeft && productRight && prodTitle && prodDesc && prodBadge) {
+        const pRect = productShowcase.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const progress = Math.min(1, Math.max(0, (windowHeight - pRect.top) / (windowHeight * 0.7)));
+        if (window.innerWidth > 1000) {
+            const xOffset = 150 * (1 - progress);
+            productLeft.style.transform = `translateX(${-xOffset}px) scale(${0.85 + (0.15 * progress)})`;
+            productLeft.style.opacity = progress;
+            productRight.style.transform = `translateX(${xOffset}px) scale(${0.85 + (0.15 * progress)})`;
+            productRight.style.opacity = progress;
+            prodTitle.style.transform = `translateY(${30 - (30 * progress)}px)`;
+            prodTitle.style.opacity = progress;
+            prodDesc.style.transform = `translateY(${20 - (20 * progress)}px)`;
+            prodDesc.style.opacity = progress;
+            prodBadge.style.transform = `translateY(${15 - (15 * progress)}px)`;
+            prodBadge.style.opacity = progress;
+        }
+    }
+    const rForm = inquiryForm.getBoundingClientRect();
+    const pForm = Math.min(1, Math.max(0, (window.innerHeight - rForm.top) / 600));
+    if(rForm.top < window.innerHeight && !robotAwake) {
+        robotAwake = true;
+        startBlinking();
+    }
+    if(window.innerWidth > 900) {
+        inquiryForm.style.transform = `translateY(${(1 - pForm) * 200}px) rotateX(${(1 - pForm) * 15}deg)`;
+        inquiryForm.style.opacity = pForm;
+        const scrollOffset = (window.innerHeight - rForm.top) * 0.15;
+        askMeLabel.style.transform = `translateY(${scrollOffset * -0.5}px) rotateX(${scrollOffset * 0.1}deg)`;
+    } else {
+        inquiryForm.style.opacity = pForm;
+    }
+});
+const contactSection = document.getElementById('contact');
+window.addEventListener('mousemove', (e) => {
+    if(!robotAwake) return;
+    const contactRect = contactSection.getBoundingClientRect();
+    const formRect = inquiryForm.getBoundingClientRect();
+    const isInsideContact = e.clientY >= contactRect.top && e.clientY <= contactRect.bottom;
+    const isInsideForm = e.clientX >= formRect.left && e.clientX <= formRect.right && e.clientY >= formRect.top && e.clientY <= formRect.bottom;
+    if (isInsideContact && !isInsideForm) {
+        createGlitter(e.clientX, e.clientY);
+    }
+    const rect = robotHead.getBoundingClientRect();
+    const headCenterX = rect.left + rect.width / 2;
+    const headCenterY = rect.top + rect.height / 2;
+    const angleX = (e.clientY - headCenterY) / 12;
+    const angleY = (e.clientX - headCenterX) / 12;
+    const tiltX = Math.max(-12, Math.min(12, -angleX));
+    const tiltY = Math.max(-15, Math.min(15, angleY));
+    const curiousTilt = Math.abs(tiltY) > 8 ? (tiltY > 0 ? 5 : -5) : 0;
+    robotHead.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) rotateZ(${curiousTilt}deg)`;
+    pupils.forEach(pupil => {
+        const pRect = pupil.parentElement.getBoundingClientRect();
+        const eyeCenterX = pRect.left + pRect.width / 2;
+        const eyeCenterY = pRect.top + pRect.height / 2;
+        const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+        const distance = Math.min(pRect.width / 3.5, Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 12);
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+        pupil.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+    });
+    if (isInsideForm) {
+        robotHead.classList.add('smiling');
+    } else if (!isSmiling) {
+        robotHead.classList.remove('smiling');
+    }
+});
+function createGlitter(x, y) {
+    const glitter = document.createElement('div');
+    glitter.className = 'glitter';
+    glitter.style.left = x + 'px';
+    glitter.style.top = (y + window.scrollY) + 'px';
+    glitter.style.width = '14px';
+    glitter.style.height = '4px';
+    document.body.appendChild(glitter);
+    setTimeout(() => glitter.remove(), 600);
+}
+formInputs.forEach(input => {
+    input.addEventListener('focus', () => { isSmiling = true; robotHead.classList.add('smiling'); });
+    input.addEventListener('blur', () => { isSmiling = false; });
+});
+function startBlinking() {
+    function blink() {
+        eyes.forEach(eye => eye.classList.add('blinking'));
+        setTimeout(() => {
+            eyes.forEach(eye => eye.classList.remove('blinking'));
+        }, 120);
+        setTimeout(blink, Math.random() * 3000 + 1500);
+    }
+    blink();
+}
+const robotQuotes = ["Start a project?", "Need help?", "Let's build!", "I'm listening."];
+robotHead.addEventListener('click', () => {
+    let quote = "";
+    if(firstRobotClick) {
+        quote = "Hello!";
+        firstRobotClick = false;
+        robotHand.classList.add('waving');
+    } else {
+        quote = robotQuotes[Math.floor(Math.random() * robotQuotes.length)];
+    }
+    robotHead.classList.add('smiling');
+    robotBubble.textContent = quote;
+    robotBubble.classList.add('show');
+    setTimeout(() => {
+        robotBubble.classList.remove('show');
+        robotHand.classList.remove('waving');
+        if(!isSmiling) robotHead.classList.remove('smiling');
+    }, 2500);
+});
+const glow = document.getElementById('cursorGlow');
+if (servicesBlock && glow) {
+    servicesBlock.addEventListener('mousemove', e => {
+        if(window.innerWidth <= 900) return;
+        const r = servicesBlock.getBoundingClientRect();
+        glow.style.left = e.clientX - r.left + 'px';
+        glow.style.top = e.clientY - r.top + 'px';
+        glow.style.opacity = 1;
+    });
+    servicesBlock.addEventListener('mouseleave', () => glow.style.opacity = 0);
+}
+
+const params = new URLSearchParams(window.location.search);
+// Prefill concern_type via query param (e.g. ?concern_type=led%20wall)
+const prefillConcern = params.get('concern_type');
+if (prefillConcern) {
+    const concernSelect = document.querySelector('select[name="concern_type"]');
+    if (concernSelect) {
+        concernSelect.value = prefillConcern;
+        if (concernSelect.value !== prefillConcern) {
+            const wanted = String(prefillConcern).toLowerCase();
+            for (const opt of Array.from(concernSelect.options)) {
+                if (String(opt.value || '').toLowerCase() === wanted) {
+                    concernSelect.value = opt.value;
+                    break;
+                }
+            }
+        }
+        concernSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+}
+if (params.get('success') === 'true') {
+    const name = params.get('name');
+    const ref = params.get('ref');
+    const modal = document.getElementById('successModal');
+    const message = document.getElementById('modalMessage');
+    const closeBtn = document.getElementById('closeModal');
+    const okBtn = document.getElementById('okButton');
+
+    message.textContent = `Thank you, ${name}! Your inquiry was submitted successfully. Reference ID: ${ref}`;
+    modal.style.display = 'block';
+
+    closeBtn.onclick = () => modal.style.display = 'none';
+
+    okBtn.onclick = () => modal.style.display = 'none';
+
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    };
+
+   
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+    }
+}
+window.dispatchEvent(new Event('scroll'));
+</script>
+</body>
+
+<script>
+
+(function(){
+  function scrollToElement(id) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var hash = a.getAttribute('href');
+    if (hash && hash.length > 1) {
+      e.preventDefault();
+      var id = hash.slice(1);
+      scrollToElement(id);
+   
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+  });
+})();
+</script>
+</html>

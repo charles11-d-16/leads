@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Templates - Techstacks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+        <link rel="stylesheet" href="styles.css">
+<style>
+        :root {
+            --bg: #000;
+            --primary: #43f3d0;
+            --text: #ecfffb;
+            --light-grey: #d3d3d3;
+            --border-grey: rgba(211, 211, 211, 0.3);
+        
+            --muted: #9fbdb6;
+            --border: rgba(255, 255, 255, 0.12);
+            --glass: rgba(255, 255, 255, 0.05);
+            --dropdown-bg: #0d1514;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 100px 20px 40px 20px;
+        }
+
+
+        /* Header fixed positioning should ignore body padding */
+        header { left: 0; right: 0; }
+        .nav-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 10px auto 30px auto;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        .nav-breadcrumb i.bi-house-door {
+            color: var(--light-grey);
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-breadcrumb:hover i.bi-house-door {
+            color: #fff;
+        }
+
+        .nav-breadcrumb i.bi-chevron-right {
+            color: var(--border-grey);
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        .nav-breadcrumb span {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+        }
+        /* Breadcrumb tuning (smaller + muted, not bold) */
+        .nav-breadcrumb i.bi-house-door {
+            color: var(--muted);
+            font-size: 1.15rem;
+        }
+
+        .nav-breadcrumb:hover i.bi-house-door {
+            color: var(--muted);
+        }
+
+        .nav-breadcrumb i.bi-chevron-right {
+            color: rgba(159, 189, 182, 0.45);
+            font-size: 0.8rem;
+        }
+
+        .nav-breadcrumb span {
+            color: var(--muted);
+            font-weight: 400;
+            font-size: 1.05rem;
+            letter-spacing: 0;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header-section h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .template-card {
+            background: #000;
+            border: 1px solid var(--light-grey);
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden; 
+                    height: auto;
+            min-height: unset;
+}
+
+        .card-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(67, 243, 208, 0.35) 0%, rgba(67, 243, 208, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .templates-grid:hover .card-glow {
+            opacity: 1;
+        }
+
+        .template-card:hover {
+            transform: scale(1.03);
+            border-color: transparent;
+        }
+
+        .template-img, .template-info, .card-actions {
+            position: relative;
+            z-index: 1;
+        }
+
+        .template-card img.template-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            object-position: top;
+                        filter: none;
+            transform: none;
+border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        
+        .template-card:hover img.template-img {
+            filter: none;
+            transform: none;
+        }
+.template-info h3 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .features-list li {
+            font-size: 0.8rem;
+            background: transparent;
+            border: 1px solid var(--light-grey);
+            color: var(--light-grey);
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-view, .btn-inquire {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.4s ease;
+            font-size: 0.9rem;
+            position: relative;
+            background: transparent;
+            text-decoration: none;
+        }
+
+        .btn-view {
+            border: 1px solid var(--light-grey);
+            color: var(--light-grey);
+        }
+
+        .btn-view:hover {
+            background-color: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+
+        .btn-inquire {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-inquire::before {
+            content: "";
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+        .btn-inquire:hover {
+            color: #000;
+        }
+
+        .btn-inquire:hover::before {
+            transform: translateY(-100%);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .pagination button {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 2% auto;
+            width: 90%;
+            max-width: 1000px;
+            background: #111;
+            border: 1px solid var(--border-grey);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #1a1a1a;
+            border-bottom: 1px solid var(--border-grey);
+        }
+
+        .view-toggles {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .view-toggles i {
+            color: var(--light-grey);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .view-toggles i:hover, .view-toggles i.active {
+            color: var(--primary);
+        }
+
+        .close-modal {
+            font-size: 24px;
+            color: var(--light-grey);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .preview-body {
+            position: relative;
+            height: 75vh;
+            background: #000;
+        }
+
+        .scroll-container {
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        .scroll-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .modal-inquire-container {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        .btn-modal-inquire {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(67, 243, 208, 0.3);
+            text-decoration: none;
+        }
+
+        .scroll-indicator-wrapper {
+            position: absolute;
+            bottom: 95px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--primary);
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .scroll-indicator {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        .scroll-container::-webkit-scrollbar { width: 8px; }
+        .scroll-container::-webkit-scrollbar-track { background: #000; }
+        .scroll-container::-webkit-scrollbar-thumb { background: var(--border-grey); border-radius: 10px; }
+
+</style>
+</head>
+<body>
+
+    <header>
+<div class="nav">
+<div class="brand" onclick="window.scrollTo(0,0)">
+  <img src="greenlogo.png" alt="Logo" class="brand-logo">
+  <span>Techstacks</span>
+</div>
+<button class="menu-trigger" id="menuBtn" type="button">Menu</button>
+<nav id="navMenu">
+<a href="/#home" class="nav-link">Home</a>
+<a href="services.html" class="nav-link">Services</a>
+<div class="nav-item dropdown">
+    <a href="#" class="nav-link">Products <i class="bi bi-chevron-down dropdown-arrow"></i></a>
+    <div class="dropdown-content">
+        <a href="web-templates.html" class="dropdown-item">
+            <div class="dropdown-icon-box"><i class="bi bi-layout-text-window-reverse"></i></div>
+            <div class="dropdown-text">
+                <span class="dropdown-title">Web Templates</span>
+                <span class="dropdown-desc">Premium UI designs</span>
+            </div>
+        </a>
+        <a href="led-wall.html" class="dropdown-item">
+            <div class="dropdown-icon-box"><i class="bi bi-display"></i></div>
+            <div class="dropdown-text">
+                <span class="dropdown-title">LED Wall P3.91</span>
+                <span class="dropdown-desc">Visual solutions</span>
+            </div>
+        </a>
+    </div>
+</div>
+<a href="contact/public/index.html" class="nav-link contact-btn">Get in Touch</a>
+<div class="theme-control">
+    <button class="theme-btn" data-theme="dark" title="Dark Mode">&#xf494;</button>
+    <button class="theme-btn" data-theme="light" title="Light Mode">&#xf1d1;</button>
+    <button class="theme-btn" data-theme="system" title="System Theme">&#xf301;</button>
+</div>
+</nav>
+</div>
+</header><a href="/" class="nav-breadcrumb">
+        <i class="bi bi-house-door"></i>
+        <i class="bi bi-chevron-right"></i>
+        <span>Templates</span>
+    </a>
+
+    <div class="header-section">
+        <h1>Website Templates</h1>
+        <p>Choose the perfect foundation for your business</p>
+    </div>
+
+    <div id="templatesGrid" class="templates-grid"></div>
+
+    <div class="pagination">
+        <button id="prevBtn"><i class="bi bi-chevron-left"></i> Prev</button>
+        <span id="pageInfo">Page 1 of 1</span>
+        <button id="nextBtn">Next <i class="bi bi-chevron-right"></i></button>
+    </div>
+
+    <div id="previewModal" class="modal">
+        <div class="modal-content" id="modalContainer">
+            <div class="modal-header">
+                <div class="view-toggles">
+                    <i class="bi bi-laptop active" id="desktopView" title="Desktop View"></i>
+                    <i class="bi bi-phone" id="mobileView" title="Mobile View"></i>
+                </div>
+                <span class="close-modal"><i class="bi bi-x-lg"></i></span>
+            </div>
+            <div class="preview-body">
+                <div class="scroll-indicator-wrapper" id="scrollWrapper">
+                    <span class="scroll-text">Scroll down</span>
+                    <div class="scroll-indicator"><i class="bi bi-chevron-double-down"></i></div>
+                </div>
+                <div class="scroll-container" id="modalScroll">
+                    <img id="previewImg" src="" alt="Full Preview">
+                </div>
+                <div class="modal-inquire-container">
+                    <button class="btn-modal-inquire" id="modalInquireBtn">Inquire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+if (menuBtn && navMenu) {
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        menuBtn.textContent = navMenu.classList.contains('open') ? 'Close' : 'Menu';
+    });
+}
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navMenu && navMenu.classList.contains('open')) {
+            navMenu.classList.remove('open');
+            if (menuBtn) menuBtn.textContent = 'Menu';
+        }
+    });
+});
+
+// Dropdown hover delay (keeps menu open while moving cursor into it)
+const dropdown = document.querySelector('.nav-item.dropdown');
+let dropdownCloseTimer;
+if (dropdown) {
+    dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(dropdownCloseTimer);
+        dropdown.classList.add('open');
+    });
+    dropdown.addEventListener('mouseleave', () => {
+        dropdownCloseTimer = setTimeout(() => dropdown.classList.remove('open'), 200);
+    });
+}
+const root = document.documentElement;
+const themeBtns = document.querySelectorAll('.theme-btn');
+const STORAGE_KEY = 'preferred-theme';
+
+function resolveTheme(preferred) {
+    if (preferred === 'system') {
+        return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+    return preferred === 'light' ? 'light' : 'dark';
+}
+
+function applyPreferredTheme(preferred, options = {}) {
+    const theme = resolveTheme(preferred);
+    root.setAttribute('data-theme', theme);
+
+    themeBtns.forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.theme === preferred);
+    });
+
+    if (options.persist !== false) {
+        try { localStorage.setItem(STORAGE_KEY, preferred); } catch (e) {}
+    }
+}
+
+let preferred = 'dark';
+try { preferred = localStorage.getItem(STORAGE_KEY) || 'dark'; } catch (e) {}
+applyPreferredTheme(preferred, { persist: false });
+
+themeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => applyPreferredTheme(btn.dataset.theme));
+});
+
+if (window.matchMedia) {
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const onChange = () => {
+        let current = 'dark';
+        try { current = localStorage.getItem(STORAGE_KEY) || 'dark'; } catch (e) {}
+        if (current === 'system') applyPreferredTheme('system', { persist: false });
+    };
+
+    if (typeof mql.addEventListener === 'function') mql.addEventListener('change', onChange);
+    else if (typeof mql.addListener === 'function') mql.addListener(onChange);
+}
+
+const templates = [
+            { id: 1, title: "Features:", img: "img/temp1.webp", features: ["Home", "About", "Services", "Contacts"] },
+            { id: 2, title: "Features:", img: "img/temp2.webp", features: ["Home", "About", "Services", "Blog", "Contacts"] },
+            { id: 3, title: "Features:", img: "img/temp3.webp", features: ["Home", "About", "Services", "Contacts"] },
+            { id: 4, title: "Features:", img: "img/temp4.webp", features: ["Home", "About", "Services", "Contacts"] },
+            { id: 5, title: "Features:", img: "img/temp5.webp", features: ["Home", "About", "Services", "Features", "Contacts"] },
+            { id: 6, title: "Features:", img: "img/temp6.webp", features: ["Home", "About", "Services", "Contacts"] },
+            { id: 7, title: "Features:", img: "img/temp7.webp", features: ["Home", "About", "Services", "Contacts", "Features"] },
+            { id: 8, title: "Features:", img: "img/temp8.webp", features: ["Home", "About", "Services", "Blog", "Contacts"] },
+            { id: 9, title: "Features:", img: "img/temp9.webp", features: ["Home", "About", "Services", "Contacts"] },
+            { id: 10, title: "Features:", img: "img/temp10.png", features: ["Home", "About", "Services", "Contacts"] },
+            { id: 11, title: "Features:", img: "img/temp11.webp", features: ["Home", "About", "Services", "Blog", "Contacts"] },
+            { id: 12, title: "Features:", img: "img/temp12.webp", features: ["Home", "About", "Services", "Contacts"] },
+            { id: 13, title: "Features:", img: "img/temp13.webp", features: ["Home", "About", "Services", "Contacts", "Features", "Clients"] },
+            { id: 14, title: "Features:", img: "img/temp14.webp", features: ["Home", "About", "Services", "Contacts", "Features", "Blog"] },
+            { id: 15, title: "Features:", img: "img/temp15.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+            { id: 16, title: "Features:", img: "img/temp16.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+            { id: 17, title: "Features:", img: "img/temp17.webp", features: ["Home", "About", "Services", "Contacts", "Features", "Blog"] },
+            { id: 18, title: "Features:", img: "img/temp18.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+            { id: 19, title: "Features:", img: "img/temp19.webp", features: ["Home", "About", "Services", "Contacts", "Features"] },
+            { id: 20, title: "Features:", img: "img/temp20.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+            { id: 21, title: "Features:", img: "img/temp21.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+            { id: 22, title: "Features:", img: "img/temp22.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+            { id: 23, title: "Features:", img: "img/temp23.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+            { id: 24, title: "Features:", img: "img/temp24.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+            { id: 25, title: "Features:", img: "img/temp25.webp", features: ["Home", "About", "Features", "Services", "Contacts", "Blog"] },
+            { id: 26, title: "Features:", img: "img/temp26.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+            { id: 27, title: "Features:", img: "img/temp27.webp", features: ["Home", "About", "Services", "Contacts", "Blog"] },
+        ];
+
+        const cardsPerPage = 9;
+        let currentPage = 1;
+        let currentActiveImg = "";
+
+        const grid = document.getElementById('templatesGrid');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const pageInfo = document.getElementById('pageInfo');
+        const modal = document.getElementById('previewModal');
+        const modalContainer = document.getElementById('modalContainer');
+        const modalScroll = document.getElementById('modalScroll');
+        const scrollWrapper = document.getElementById('scrollWrapper');
+        const previewImg = document.getElementById('previewImg');
+        const closeBtn = document.querySelector('.close-modal');
+        const desktopBtn = document.getElementById('desktopView');
+        const mobileBtn = document.getElementById('mobileView');
+        const modalInquireBtn = document.getElementById('modalInquireBtn');
+
+        function renderTemplates() {
+            grid.innerHTML = "";
+            const start = (currentPage - 1) * cardsPerPage;
+            const end = start + cardsPerPage;
+            const paginatedItems = templates.slice(start, end);
+
+            paginatedItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'template-card';
+                card.innerHTML = `
+                    <div class="card-glow"></div>
+                    <img src="${item.img}" class="template-img" alt="${item.title}">
+                    <div class="template-info">
+                        <h3>${item.title}</h3>
+                        <ul class="features-list">
+                            ${item.features.map(f => `<li>${f}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-view" onclick="openPreview('${item.img}')">View</button>
+                        <button class="btn-inquire" onclick="goToInquiry('${item.img}')">Inquire</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            updatePagination();
+        }
+
+        grid.addEventListener('mousemove', (e) => {
+            const glows = document.querySelectorAll('.card-glow');
+            glows.forEach(glow => {
+                const card = glow.closest('.template-card');
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                glow.style.left = `${x}px`;
+                glow.style.top = `${y}px`;
+            });
+        });
+
+        function updatePagination() {
+            const totalPages = Math.ceil(templates.length / cardsPerPage);
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages || 1}`;
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+        }
+
+        function openPreview(imgSrc) {
+            currentActiveImg = imgSrc;
+            previewImg.src = imgSrc;
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+            scrollWrapper.style.opacity = "0.5";
+            modalScroll.scrollTop = 0;
+            resetView();
+        }
+
+        function goToInquiry(imgSrc) {
+            window.location.href = `inquiry.html?template=${encodeURIComponent(imgSrc)}`;
+        }
+
+        modalInquireBtn.onclick = () => {
+            goToInquiry(currentActiveImg);
+        };
+
+        modalScroll.onscroll = () => {
+            if (modalScroll.scrollTop > 50) {
+                scrollWrapper.style.opacity = "0";
+            } else {
+                scrollWrapper.style.opacity = "0.5";
+            }
+        };
+
+        function resetView() {
+            modalContainer.style.maxWidth = "1000px";
+            desktopBtn.classList.add('active');
+            mobileBtn.classList.remove('active');
+        }
+
+        desktopBtn.onclick = () => {
+            modalContainer.style.maxWidth = "1000px";
+            desktopBtn.classList.add('active');
+            mobileBtn.classList.remove('active');
+        };
+
+        mobileBtn.onclick = () => {
+            modalContainer.style.maxWidth = "375px";
+            mobileBtn.classList.add('active');
+            desktopBtn.classList.remove('active');
+        };
+
+        closeBtn.onclick = () => {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        };
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        };
+
+        prevBtn.onclick = () => { if(currentPage > 1) { currentPage--; renderTemplates(); } };
+        nextBtn.onclick = () => { if(currentPage < Math.ceil(templates.length / cardsPerPage)) { currentPage++; renderTemplates(); } };
+
+        renderTemplates();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
