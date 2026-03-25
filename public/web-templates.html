@@ -453,6 +453,12 @@ border-radius: 6px;
                 <span class="dropdown-desc">Visual solutions</span>
             </div>
         </a>
+        <a href="#" class="dropdown-back">
+            <div class="dropdown-icon-box"><i class="bi bi-arrow-left"></i></div>
+            <div class="dropdown-text">
+                <span class="dropdown-title">Back to Menu</span>
+            </div>
+        </a>
     </div>
 </div>
 <a href="contact/public/index.html" class="nav-link contact-btn">Get in Touch</a>
@@ -517,7 +523,16 @@ if (menuBtn && navMenu) {
     });
 }
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+        const dropdownContainer = link.closest('.nav-item.dropdown');
+        const isMobile = window.matchMedia('(max-width: 900px)').matches;
+
+        if (dropdownContainer && isMobile) {
+            e.preventDefault();
+            const isOpen = dropdownContainer.classList.toggle('open');
+            return;
+        }
+
         if (navMenu && navMenu.classList.contains('open')) {
             navMenu.classList.remove('open');
             if (menuBtn) menuBtn.textContent = 'Menu';
@@ -527,14 +542,28 @@ navLinks.forEach(link => {
 
 // Dropdown hover delay (keeps menu open while moving cursor into it)
 const dropdown = document.querySelector('.nav-item.dropdown');
+const dropdownBack = document.querySelector('.dropdown-back');
 let dropdownCloseTimer;
 if (dropdown) {
     dropdown.addEventListener('mouseenter', () => {
-        clearTimeout(dropdownCloseTimer);
-        dropdown.classList.add('open');
+        if (!window.matchMedia('(max-width: 900px)').matches) {
+            clearTimeout(dropdownCloseTimer);
+            dropdown.classList.add('open');
+        }
     });
     dropdown.addEventListener('mouseleave', () => {
-        dropdownCloseTimer = setTimeout(() => dropdown.classList.remove('open'), 200);
+        if (!window.matchMedia('(max-width: 900px)').matches) {
+            dropdownCloseTimer = setTimeout(() => dropdown.classList.remove('open'), 200);
+        }
+    });
+}
+
+if (dropdownBack) {
+    dropdownBack.addEventListener('click', (e) => {
+        e.preventDefault();
+        const navMenuEl = document.getElementById('navMenu');
+        navMenuEl.classList.remove('product-open');
+        dropdown.classList.remove('open');
     });
 }
 const root = document.documentElement;

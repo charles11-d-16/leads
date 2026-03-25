@@ -95,7 +95,16 @@ if (menuBtn && navMenu) {
 }
 
 navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+        const dropdownContainer = link.closest('.nav-item.dropdown');
+        const isMobile = window.matchMedia('(max-width: 900px)').matches;
+
+        if (dropdownContainer && isMobile) {
+            e.preventDefault();
+            dropdownContainer.classList.toggle('open');
+            return;
+        }
+
         if (navMenu && navMenu.classList.contains('open')) {
             navMenu.classList.remove('open');
             if (menuBtn) menuBtn.textContent = 'Menu';
@@ -103,18 +112,23 @@ navLinks.forEach((link) => {
     });
 });
 
-// Dropdown hover delay (keeps menu open while moving cursor into it)
+// Dropdown hover delay (keeps menu open while moving cursor into it) - desktop only
 const dropdown = document.querySelector('.nav-item.dropdown');
 let dropdownCloseTimer;
-if (dropdown) {
-    dropdown.addEventListener('mouseenter', () => {
-        clearTimeout(dropdownCloseTimer);
-        dropdown.classList.add('open');
-    });
-    dropdown.addEventListener('mouseleave', () => {
-        dropdownCloseTimer = setTimeout(() => dropdown.classList.remove('open'), 200);
-    });
+function setupDropdownBehavior() {
+    const isMobile = window.matchMedia('(max-width: 900px)').matches;
+    if (dropdown && !isMobile) {
+        dropdown.addEventListener('mouseenter', () => {
+            clearTimeout(dropdownCloseTimer);
+            dropdown.classList.add('open');
+        });
+        dropdown.addEventListener('mouseleave', () => {
+            dropdownCloseTimer = setTimeout(() => dropdown.classList.remove('open'), 200);
+        });
+    }
 }
+setupDropdownBehavior();
+window.addEventListener('resize', setupDropdownBehavior);
 
 // Theme (dark/light/system)
 const root = document.documentElement;
