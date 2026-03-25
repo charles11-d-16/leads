@@ -9,17 +9,30 @@
     
         <link rel="stylesheet" href="styles.css">
 <style>
-        :root {
+        :root[data-theme="dark"] {
             --bg: #000;
             --primary: #43f3d0;
             --text: #ecfffb;
             --light-grey: #d3d3d3;
             --border-grey: rgba(211, 211, 211, 0.3);
-        
             --muted: #9fbdb6;
             --border: rgba(255, 255, 255, 0.12);
             --glass: rgba(255, 255, 255, 0.05);
+            --card-bg: #000;
             --dropdown-bg: #0d1514;
+        }
+
+        :root[data-theme="light"] {
+            --bg: #f8fafc;
+            --primary: #0d9488;
+            --text: #1a2e2b;
+            --light-grey: #64748b;
+            --border-grey: rgba(100, 116, 139, 0.25);
+            --muted: #64748b;
+            --border: rgba(13, 148, 136, 0.15);
+            --glass: rgba(255, 255, 255, 0.85);
+            --card-bg: #ffffff;
+            --dropdown-bg: #ffffff;
         }
 
         body {
@@ -110,8 +123,8 @@
         }
 
         .template-card {
-            background: #000;
-            border: 1px solid var(--light-grey);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
@@ -298,10 +311,16 @@ border-radius: 6px;
             margin: 2% auto;
             width: 90%;
             max-width: 1000px;
-            background: #111;
+            background: var(--card-bg);
             border: 1px solid var(--border-grey);
             border-radius: 8px;
             overflow: hidden;
+        }
+
+        .preview-body {
+            position: relative;
+            height: 75vh;
+            background: var(--bg);
         }
 
         .modal-header {
